@@ -1,0 +1,21 @@
+﻿{
+  "name": "agriscan",
+  "version": "1.0.0",
+  "description": "AgriScan Precision Agriculture & Autonomous Decision Intelligence Platform",
+  "private": true,
+  "scripts": {
+    "start": "python main.py",
+    "dev": "python main.py",
+    "build": "cd frontend && npm run build",
+    "test": "cd backend && pytest tests/",
+    "lint": "flake8 backend/app"
+  },
+  "keywords": [
+    "precision-agriculture",
+    "crop-recommendation",
+    "soil-diagnostics",
+    "agronomy"
+  ],
+  "author": "Kusuma Podili",
+  "license": "UNLICENSED"
+}
