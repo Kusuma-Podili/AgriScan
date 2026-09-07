@@ -1,4 +1,4 @@
-﻿[tool.poetry]
+[tool.poetry]
 name = "agriscan"
 version = "1.0.0"
 description = "AgriScan Precision Agriculture & Autonomous Decision Intelligence Platform"

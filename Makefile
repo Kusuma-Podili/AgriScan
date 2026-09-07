@@ -1,4 +1,4 @@
-﻿.PHONY: help install run test lint docker-build docker-run clean
+.PHONY: help install run test lint docker-build docker-run clean
 
 PYTHON ?= python
 PIP ?= pip

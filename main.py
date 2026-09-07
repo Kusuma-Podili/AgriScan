@@ -1,4 +1,4 @@
-﻿"""
+"""
 AgriScan Platform Entry Point.
 Direct executable script that launches the FastAPI decision platform and web dashboard.
 """
