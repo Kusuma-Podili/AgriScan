@@ -134,3 +134,34 @@ pytest -v --cov=app tests/
 cd frontend
 npm run test
 ```
+
+
+---
+
+## 📡 REST API Quickstart & Examples
+
+### Health Check
+```bash
+curl -X GET "http://localhost:8000/health"
+```
+
+### Quick Crop Suitability Recommendation
+```bash
+curl -X POST "http://localhost:8000/api/v1/recommendations/quick" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "n_kg_ha": 135.0,
+    "p_kg_ha": 45.0,
+    "k_kg_ha": 40.0,
+    "ph": 6.8,
+    "organic_carbon_pct": 0.65,
+    "ec_ds_m": 0.7,
+    "temperature_c": 22.5,
+    "temp_max_c": 28.0,
+    "temp_min_c": 17.0,
+    "humidity_pct": 65.0,
+    "rainfall_mm": 550.0,
+    "soil_texture": "loam",
+    "top_k": 5
+  }'
+```
