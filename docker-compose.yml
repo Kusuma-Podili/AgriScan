@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agropulse-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=postgresql://agropulse:agropulse_secret@postgres:5432/agropulse_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=enterprise_agropulse_secret_key_change_in_prod_2026
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app
+      - backend_models:/app/models_data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agropulse-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  postgres:
+    image: postgis/postgis:15-3.3-alpine
+    container_name: agropulse-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=agropulse
+      - POSTGRES_PASSWORD=agropulse_secret
+      - POSTGRES_DB=agropulse_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: agropulse-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+  backend_models:
