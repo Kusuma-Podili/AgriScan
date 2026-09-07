@@ -34,7 +34,7 @@ class MeteorologicalDataUnavailableError(AgroPulseException):
     def __init__(self, location: str):
         super().__init__(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Meteorological or climate forecast data currently unavailable for coordinates/location: {reason}",
+            detail=f"Meteorological or climate forecast data currently unavailable for coordinates/location: {location}",
         )
 
 

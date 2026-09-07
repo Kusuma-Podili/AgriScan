@@ -1,6 +1,17 @@
 
 from functools import lru_cache
 
+NUTRIENT_UPTAKE_PER_TON = {
+    "wheat": (25.0, 9.0, 22.0),
+    "rice": (20.0, 8.0, 25.0),
+    "corn": (22.0, 9.0, 19.0),
+    "maize": (22.0, 9.0, 19.0),
+    "cotton": (28.0, 10.0, 24.0),
+    "soybean": (30.0, 8.0, 18.0),
+    "sugarcane": (15.0, 6.0, 22.0),
+    "potato": (18.0, 7.0, 28.0),
+}
+
 @lru_cache(maxsize=128)
 def get_cached_nutrient_uptake(crop_name: str) -> tuple:
     """Cached accessor for crop nutrient uptake constants."""
