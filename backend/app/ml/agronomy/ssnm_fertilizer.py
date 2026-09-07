@@ -1,3 +1,12 @@
+
+from functools import lru_cache
+
+@lru_cache(maxsize=128)
+def get_cached_nutrient_uptake(crop_name: str) -> tuple:
+    """Cached accessor for crop nutrient uptake constants."""
+    crop_lower = crop_name.lower().strip()
+    return NUTRIENT_UPTAKE_PER_TON.get(crop_lower, (20.0, 8.0, 20.0))
+
 """
 AgroPulse Site-Specific Nutrient Management (SSNM) and Fertilizer Optimization Engine.
 Calculates targeted nutrient balancing based on crop yield goals, indigenous soil nutrient supply,
